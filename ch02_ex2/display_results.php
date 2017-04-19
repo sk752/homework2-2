@@ -10,7 +10,7 @@
     // validate investment
     if ($investment === FALSE ) {
         $error_message = 'Investment must be a valid number.'; 
-    } else if ( $investment <= 0 ) {
+    } else if ( $investment <= 0 )
         $error_message = 'Investment must be greater than zero.'; 
     // validate interest rate
     } else if ( $interest_rate === FALSE )  {
@@ -18,8 +18,11 @@
     } else if ( $interest_rate <= 0 ) {
         $error_message = 'Interest rate must be greater than zero.'; 
     // validate years
-    } else if ( $years === FALSE ) {
-        $error_message = 'Years must be a valid whole number.';
+    }else if ( $interest_rate >= 15){
+    	$error _message = "Interest rate must be less that or equal to 15';
+    }else if ( $years === FALSE){
+    	$error_message = 'Years must be a valid whole number';
+
     } else if ( $years <= 0 ) {
         $error_message = 'Years must be greater than zero.';
     } else if ( $years > 30 ) {
@@ -40,7 +43,8 @@
         $future_value = 
             $future_value + ($future_value * $interest_rate * .01); 
     }
-
+    //date
+    $date = date('m/d/y');
     // apply currency and percent formatting
     $investment_f = '$'.number_format($investment, 2);
     $yearly_rate_f = $interest_rate.'%';
@@ -67,6 +71,10 @@
 
         <label>Future Value:</label>
         <span><?php echo $future_value_f; ?></span><br>
+
+	<label> Time Stamp: </label>
+	<span><?php echo $date ; ?></span><br>
+
     </main>
 </body>
 </html>
